@@ -78,7 +78,6 @@ inspiringQuoteButton.addEventListener("click", async function() {
     console.log(err);
   }
 })
-})
 /*  
 =======================================
 TODO4: Dammam Weather Now
@@ -93,13 +92,29 @@ https://openweathermap.org/api
 
 ✅ Task:
 - When the button with id="t4-loadWx" is clicked:
-    - Fetch current weather data for Dammam.
-    - Show temperature in the element with id="t4-temp".
-    - Show humidity in the element with id="t4-hum".
-    - Show wind speed in the element with id="t4-wind".
+- Fetch current weather data for Dammam.
+- Show temperature in the element with id="t4-temp".
+- Show humidity in the element with id="t4-hum".
+- Show wind speed in the element with id="t4-wind".
 
 💡 Hint:
 data.main.temp      → temperature (°C)
 data.main.humidity  → humidity (%)
 data.wind.speed     → wind speed (m/s)
 */
+const weatherButton = document.getElementById("t4-loadWx");
+const apiKey = "b8d6b7d047cefe9bf5994ebdbed76d13";
+weatherButton.addEventListener("click", async function() {
+    try {
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=Dammam,SA&appid=${apiKey}&units=metric`);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        document.getElementById("t4-temp").innerHTML = data.main.temp;
+        document.getElementById("t4-hum").innerHTML = data.main.humidity;
+        document.getElementById("t4-wind").innerHTML = data.wind.speed;
+    } catch (err) {
+    console.log(err);
+  }
+})
+
+});
