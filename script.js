@@ -34,11 +34,11 @@ the <p> with id="t2-status" to:
 - Inside the event, change the text of the status paragraph.
 
 */
-button = document.getElementById("t2-btn");
-button.addEventListener("click", function () {
+const interactionCornerButton = document.getElementById("t2-btn");
+interactionCornerButton.addEventListener("click", function () {
     document.getElementById("t2-status").innerHTML = "You clicked the button!";
 });
- })
+
 
 /*  
 =======================================
@@ -66,8 +66,19 @@ Use:
 data.content   // the quote text
 data.author    // the author
 */
- 
-
+const inspiringQuoteButton = document.getElementById("t3-loadQuote");
+inspiringQuoteButton.addEventListener("click", async function() {
+    try {
+    const res  = await fetch("https://dummyjson.com/quotes/random");
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    document.getElementById("t3-quote").innerHTML = data.quote;
+    document.getElementById("t3-author").innerHTML = data.author;
+  } catch (err) {
+    console.log(err);
+  }
+})
+})
 /*  
 =======================================
 TODO4: Dammam Weather Now
