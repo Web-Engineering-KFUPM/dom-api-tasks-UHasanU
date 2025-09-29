@@ -15,11 +15,9 @@ inside the <p> element with id="t1-msg".
 ✅ Task:
 - Select the element with id "t1-msg".
 - Change its text to "Hello, World!".
-
-💡 Hint:
-document.getElementById("t1-msg").innerHTML = "Hello, World!";
 */
- 
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("t1-msg").innerHTML = "Hello, World!"; 
 
 /*  
 =======================================
@@ -35,12 +33,12 @@ the <p> with id="t2-status" to:
 - Add a click event listener.
 - Inside the event, change the text of the status paragraph.
 
-💡 Hint:
-button.addEventListener("click", function () {
-    // change text here
-});
 */
- 
+button = document.getElementById("t2-btn");
+button.addEventListener("click", function () {
+    document.getElementById("t2-status").innerHTML = "You clicked the button!";
+});
+ })
 
 /*  
 =======================================
